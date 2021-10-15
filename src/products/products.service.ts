@@ -6,10 +6,10 @@ import { v4 as uuid } from 'uuid';
 @Injectable()
 export class ProductService {
     private products: Product[] = [];
-    insertProduct(name: string, price:number) {                 
+    insertProduct(name: string, price:number, discount: number) {                 
         const id: string = uuid();
 
-        const newProduct =  new Product(id,name,price);
+        const newProduct =  new Product(id,name,price,discount);
         this.products.push(newProduct);
         return id;
     }
@@ -21,7 +21,7 @@ export class ProductService {
         const product = this.findProduct(id)[0];
         return {...product};
     }
-    updateProduct(id:string, name:string, price:number) {
+    updateProduct(id:string, name:string, price:number, discount: number) {
         const [product,product_index] = this.findProduct(id);
 
         const to_update_product = {...product};
@@ -31,6 +31,10 @@ export class ProductService {
         if (price) {
             to_update_product.price = price;
         }
+        if (discount) {
+            to_update_product.discount = discount;
+        }
+
         this.products[product_index] = to_update_product;
     }
     private findProduct(id:string) : [Product, number]{ 
