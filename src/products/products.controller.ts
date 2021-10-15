@@ -18,10 +18,7 @@ export class ProductsController {
     getAllProducts() {
         return this.productsService.fetchProducts();
     }
-    @Get()
-    test() { 
-        return 'working alive';
-    }
+  
     
     @Get(':id')
     getProduct(@Param('id') id : string) {         

@@ -14,9 +14,9 @@ let ProductService = class ProductService {
     constructor() {
         this.products = [];
     }
-    insertProduct(name, price) {
+    insertProduct(name, price, discount) {
         const id = (0, uuid_1.v4)();
-        const newProduct = new product_model_1.Product(id, name, price);
+        const newProduct = new product_model_1.Product(id, name, price, discount);
         this.products.push(newProduct);
         return id;
     }
@@ -27,7 +27,7 @@ let ProductService = class ProductService {
         const product = this.findProduct(id)[0];
         return Object.assign({}, product);
     }
-    updateProduct(id, name, price) {
+    updateProduct(id, name, price, discount) {
         const [product, product_index] = this.findProduct(id);
         const to_update_product = Object.assign({}, product);
         if (name) {
@@ -35,6 +35,9 @@ let ProductService = class ProductService {
         }
         if (price) {
             to_update_product.price = price;
+        }
+        if (discount) {
+            to_update_product.discount = discount;
         }
         this.products[product_index] = to_update_product;
     }
