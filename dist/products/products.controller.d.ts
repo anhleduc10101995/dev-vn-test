@@ -12,5 +12,21 @@ export declare class ProductsController {
         price: number;
         discount: number;
     };
-    updateProduct(id: string, name: string, price: number, discount: number): void;
+    updateProduct(id: string, name: string, price: number, discount: number): {
+        statusCode: number | {
+            id: string;
+            name: string;
+            price: number;
+            discount: number;
+        };
+        object: number | {
+            id: string;
+            name: string;
+            price: number;
+            discount: number;
+        };
+    };
+    deleteProduct(id: string): {
+        status: number;
+    };
 }

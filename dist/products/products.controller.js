@@ -30,7 +30,15 @@ let ProductsController = class ProductsController {
         return this.productsService.fetchProduct(id);
     }
     updateProduct(id, name, price, discount) {
-        this.productsService.updateProduct(id, name, price, discount);
+        const [updated_product, update_statusCode] = this.productsService.updateProduct(id, name, price, discount);
+        return {
+            statusCode: update_statusCode,
+            object: updated_product
+        };
+    }
+    deleteProduct(id) {
+        const statusCode = this.productsService.deleteProduct(id);
+        return { status: statusCode };
     }
 };
 __decorate([
@@ -65,6 +73,13 @@ __decorate([
     __metadata("design:paramtypes", [String, String, Number, Number]),
     __metadata("design:returntype", void 0)
 ], ProductsController.prototype, "updateProduct", null);
+__decorate([
+    (0, common_1.Delete)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], ProductsController.prototype, "deleteProduct", null);
 ProductsController = __decorate([
     (0, common_1.Controller)('products'),
     __metadata("design:paramtypes", [products_service_1.ProductService])

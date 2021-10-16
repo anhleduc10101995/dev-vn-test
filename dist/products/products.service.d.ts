@@ -9,6 +9,12 @@ export declare class ProductService {
         price: number;
         discount: number;
     };
-    updateProduct(id: string, name: string, price: number, discount: number): void;
+    deleteProduct(id: string): number;
+    updateProduct(id: string, name: string, price: number, discount: number): (number | {
+        id: string;
+        name: string;
+        price: number;
+        discount: number;
+    })[];
     private findProduct;
 }

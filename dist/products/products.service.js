@@ -27,19 +27,38 @@ let ProductService = class ProductService {
         const product = this.findProduct(id)[0];
         return Object.assign({}, product);
     }
+    deleteProduct(id) {
+        const [product, product_index] = this.findProduct(id);
+        const before_length = this.products.length;
+        if (product_index > -1) {
+            this.products.splice(product_index, 1);
+        }
+        if (before_length - this.products.length == 1) {
+            return 200;
+        }
+        throw new common_1.NotFoundException('error during the removal of this product');
+    }
     updateProduct(id, name, price, discount) {
         const [product, product_index] = this.findProduct(id);
         const to_update_product = Object.assign({}, product);
+        var updated = false;
         if (name) {
             to_update_product.name = name;
+            updated = true;
         }
         if (price) {
             to_update_product.price = price;
+            updated = true;
         }
         if (discount) {
             to_update_product.discount = discount;
+            updated = true;
         }
         this.products[product_index] = to_update_product;
+        if (updated == false) {
+            throw new common_1.NotFoundException('product not updated');
+        }
+        return [to_update_product, 200];
     }
     findProduct(id) {
         const product_index = this.products.findIndex((product) => product.id == id);
