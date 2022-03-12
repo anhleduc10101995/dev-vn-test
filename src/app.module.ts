@@ -13,6 +13,7 @@ import { Photo } from './photos/photo.entity';
       database: 'trinity',
       entities: [Photo],
       host:'34.95.30.55',
+      port: 3306, 
       synchronize: true,
     }),
     PhotosModule
