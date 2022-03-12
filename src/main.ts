@@ -26,6 +26,6 @@ async function bootstrap() {
   console.log(process.env.PORT);
   const PORT = Number(process.env.PORT) || 8080;
   console.log(PORT);
-  await app.listen(PORT);
+  await app.listen();
 }
 bootstrap();
