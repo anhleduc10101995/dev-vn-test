@@ -2,7 +2,10 @@ runtime: nodejs14
 service: default
 instance_class: F2
 env_variables:
-  DB_KEY: "abc"
+  BUCKET_NAME: "example-gcs-bucket"
+  DB_USER: "trinity"
+  DB_PASS: "1234"
+  DB_NAME: "trinity"
   JWT_SECRET: "***"
 handlers:
 - url: /.*
