@@ -9,7 +9,7 @@ import { Photo } from './photos/photo.entity';
   imports: [TypeOrmModule.forRoot({
       type: 'mysql',      
       username: 'root',
-      password: process.env.DB_PASS,
+      password: 'aHJ4kLhfeMPo7f6s',
       database: 'trinity',
       entities: [Photo],
       socketPath: `/cloudsql/hallowed-cortex-343019:northamerica-northeast1:trinity`,
