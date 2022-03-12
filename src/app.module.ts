@@ -8,9 +8,9 @@ import { Photo } from './photos/photo.entity';
 @Module({
   imports: [TypeOrmModule.forRoot({
       type: 'mysql',
-      socketPath: `/cloudsql/hallowed-cortex-343019:northamerica-northeast1:trinity`,
-      username: 'root',
-      password: 'aHJ4kLhfeMPo7f6s',
+      socketPath: '/cloudsql/hallowed-cortex-343019:northamerica-northeast1:trinity',
+      username: 'trinity',
+      password: '1234',
       database: 'trinity',
       entities: [Photo],
       synchronize: true,
