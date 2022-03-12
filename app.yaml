@@ -4,9 +4,8 @@ instance_class: F2
 env_variables:
   BUCKET_NAME: "example-gcs-bucket"
   DB_USER: "trinity"
-  DB_PASS: "1234"
+  DB_PASS: "3213123123123213"
   DB_NAME: "trinity"
-  JWT_SECRET: "***"
 handlers:
 - url: /.*
   script: auto
