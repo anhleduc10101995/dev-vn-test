@@ -5,10 +5,16 @@ import { AppService } from './app.service';
 import { PhotosModule } from './photos/photos.module';
 import { Photo } from './photos/photo.entity';
 import { ConfigModule } from '@nestjs/config';
+import { GraphQLModule } from '@nestjs/graphql';
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 
 
 @Module({
   imports: [
+      GraphQLModule.forRoot<ApolloDriverConfig>({
+        driver: ApolloDriver,
+        autoSchemaFile: 'schema.gql'
+      }),
       ConfigModule.forRoot({
         isGlobal: true,
         cache: true,

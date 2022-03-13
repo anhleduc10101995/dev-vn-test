@@ -9,7 +9,7 @@ export class PhotosService {
     @InjectRepository(Photo)
     private photosRepository: Repository<Photo>,
   ) {}
-
+  
   findAll(): Promise<Photo[]> {
     return this.photosRepository.find();
   }
