@@ -1,6 +1,6 @@
-import { Controller, Post, Body, Get,Param, Patch, Delete,HttpCode } from "@nestjs/common";
+import { Controller, Post, Body, Get,Param, Patch, Delete,HttpCode, UploadedFile, UseInterceptors} from "@nestjs/common";
 import { PhotosService } from "./photos.service";
-
+import { FileInterceptor } from "@nestjs/platform-express";
 @Controller('photos')
 export class PhotosController {
     constructor(private photoService:PhotosService){}
@@ -15,4 +15,16 @@ export class PhotosController {
         return this.photoService.findAll();
     }
 
+    @Get('image')
+    image() {
+        return this.photoService.image();
+    }
+
+    @Post('encrypt')
+    @UseInterceptors(FileInterceptor('file'))
+    encrypt(@UploadedFile() file: Express.Multer.File) {
+        return this.photoService.encrypt(file);
+    }
 }
+
+
