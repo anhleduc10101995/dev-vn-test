@@ -4,6 +4,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { PhotosModule } from './photos/photos.module';
 import { Photo } from './photos/photo.entity';
+import { WorksModule } from './works/works.module';
+import { Work } from './works/work.entity';
 import { ConfigModule } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
@@ -30,7 +32,7 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
         username: process.env.DB_USER,
         password: process.env.DB_PASS,
         database: process.env.DB_NAME,
-        entities: [Photo],
+        entities: [Photo, Work],
         synchronize: true,
       } : {
         type: 'mysql',
@@ -39,10 +41,11 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
         username: process.env.DB_USER,
         password: process.env.DB_PASS,
         database: process.env.DB_NAME,
-        entities: [Photo],
+        entities: [Photo, Work],
         synchronize: true,
     }),
-    PhotosModule
+    PhotosModule,
+    WorksModule
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -12,6 +12,17 @@ type Photo {
   isPublished: Boolean!
 }
 
+"""work"""
+type Work {
+  id: Float!
+  name: String!
+  description: String!
+  filename: String!
+  views: Float!
+  isPublished: Boolean!
+}
+
 type Query {
   photos: [Photo!]!
+  works: [Work!]!
 }
