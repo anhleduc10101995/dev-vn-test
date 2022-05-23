@@ -1,10 +1,9 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinTable } from "typeorm";
 import { ObjectType, Field } from '@nestjs/graphql';
-import { User } from "../users/user.entity";
 
-@ObjectType({ description: 'work' })
+@ObjectType({ description: 'contact' })
 @Entity()
-export class Work {
+export class Contact {
 
     @Field()
     @PrimaryGeneratedColumn()
@@ -18,30 +17,27 @@ export class Work {
 
     @Field()
     @Column("text")
-    description: string;
+    company: string;
+
+    @Field()
+    @Column("text")
+    email: string;
+
+    @Field()
+    @Column("text")
+    phone: string;
 
     @Field()
     @Column()
-    filename: string;
+    subject: string;
 
     @Field()
     @Column()
-    thumbnail: string;
+    budget: string;
 
     @Field()
     @Column()
-    title: string;
+    details: string;
 
-    @Field()
-    @Column("double")
-    views: number;
-
-    @Field()
-    @Column()
-    isPublished: boolean;
-
-    @Field(type => User, { nullable: true,  })
-    @ManyToOne(() => User, user => user.works)
-    @JoinTable()
-    user: User;
+    
 }

@@ -12,17 +12,45 @@ type Photo {
   isPublished: Boolean!
 }
 
-"""work"""
-type Work {
+"""user"""
+type User {
   id: Float!
   name: String!
   description: String!
   filename: String!
   views: Float!
   isPublished: Boolean!
+  works: Work
+}
+
+"""work"""
+type Work {
+  id: Float!
+  name: String!
+  description: String!
+  filename: String!
+  thumbnail: String!
+  title: String!
+  views: Float!
+  isPublished: Boolean!
+  user: User
+}
+
+"""contact"""
+type Contact {
+  id: Float!
+  name: String!
+  company: String!
+  email: String!
+  phone: String!
+  subject: String!
+  budget: String!
+  details: String!
 }
 
 type Query {
   photos: [Photo!]!
   works: [Work!]!
+  users: [User!]!
+  contacts: [Contact!]!
 }

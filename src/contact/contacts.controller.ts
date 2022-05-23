@@ -1,15 +1,13 @@
 import { Controller, Post, Body, Get,Param, Patch, Delete,HttpCode } from "@nestjs/common";
-import { WorkService } from "./works.service";
+import { ContactService } from "./contacts.service";
 
-@Controller('works')
-export class WorksController {
-    constructor(private workService:WorkService){}
+@Controller('contacts')
+export class ContactsController {
+    constructor(private contactService:ContactService){}
     @Post('create')
     create(@Body('key') key:string, @Body('user') user:object) {         
-        if (key == 'hallowed-cortex-343019'){
-            console.log("create");
-            console.log(key);
-            const _id = this.workService.create(user);
+        if (key == 'hallowed-cortex-343019'){                        
+            const _id = this.contactService.create(user);
             return {id : _id};
         }
 
@@ -25,7 +23,7 @@ export class WorksController {
         if (key == 'hallowed-cortex-343019'){
             console.log("create");
             console.log(key);
-            const _id = this.workService.update(id, data);
+            const _id = this.contactService.update(id, data);
             return {id : _id};
         }
     
@@ -34,7 +32,7 @@ export class WorksController {
 
     @Get('findAll')
     findAll() {
-        return this.workService.findAll();
+        return this.contactService.findAll();
     }
 
 }

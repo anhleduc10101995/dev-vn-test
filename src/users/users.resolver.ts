@@ -1,21 +1,19 @@
 import { NotFoundException } from '@nestjs/common';
 import { Args, Mutation, Query, Resolver, Subscription } from '@nestjs/graphql';
-import { Work } from './work.entity';
-import { WorkService } from './works.service';
+import { User } from './user.entity';
+import { UsersService } from './users.service';
 
-@Resolver(of => Work)
-export class WorksResolver {
-  constructor(private readonly workService: WorkService) {}
+@Resolver(of => User)
+export class UsersResolver {
+  constructor(private readonly usersService: UsersService) {}
 
-  @Query(returns => [Work])
-  async works(): Promise<Work[]> {
-    const work = await this.workService.findAll();
-    console.log("ffff");
-    console.log(work);
-    if (!work) {
+  @Query(returns => [User])
+  async users(): Promise<User[]> {
+    const user = await this.usersService.findAll();
+    if (!user) {
       throw new NotFoundException();
     }
-    return work;
+    return user;
   }
 //   async photos(@Args('id') id: string): Promise<Photo[]> {
 //     const photo = await this.photosService.findAll();
